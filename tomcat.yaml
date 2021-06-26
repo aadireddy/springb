@@ -2,10 +2,27 @@
 - name: tomcat installation
   hosts: webservers
   tasks:
-  - name: copy and untar tomcat
+  - name: install JDK 11
+    apt:
+      name: openjdk-11-jdk
+      state: present
+  - name: add tomcat group
+    group:
+      name: tomcat
+  - name: add tomcat users
+    user: tomcat
+    group: tomcat
+    home: /user/share/tomcat
+    createhome: no
+  - name: create /opt/tomcat dir
+    file:
+      path: /opt/tomcat
+      state: directory
+      mode: 0755
+  - name: download and untar tomcat
     unarchive:
-      src: /var/apache-tomcat-10.0.7.tar.gz
-      dest: /opt/
+      src: https://apachemirror.wuchna.com/tomcat/tomcat-10/v10.0.7/bin/apache-tomcat-10.0.7.tar.gz
+      dest: /opt/tomcat/
       copy: no
   - name: copy users
     template:
