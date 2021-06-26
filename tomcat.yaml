@@ -26,16 +26,16 @@
   - name: copy users
     template:
       src: tomcat-users.xml
-      dest: /opt/apache-tomcat-10.0.7/conf/tomcat-user.xml
+      dest: /opt/tomcat/apache-tomcat-10.0.7/conf/tomcat-user.xml
   - name: copy content.xml
     template:
       src: content.xml
-      dest: /opt/apache-tomcat-10.0.7/webapps/manager/META-INF/content.xml
+      dest: /opt/tomcat/apache-tomcat-10.0.7/webapps/manager/META-INF/content.xml
   - name: shutdown tomcat
-    command: nohup sh /opt/apache-tomcat-10.0.7/bin/shutdown.sh &
+    command: nohup sh /opt/tomcat/apache-tomcat-10.0.7/bin/shutdown.sh &
     become: true
     become_user: root
   - name: start tomcat
-    command: nohup sh /opt/apache-tomcat-10.0.7/bin/startup.sh &
+    command: nohup sh /opt/tomcat/apache-tomcat-10.0.7/bin/startup.sh &
     become: true
     become_user: root
