@@ -2,7 +2,7 @@
   hosts: webservers
   become: true
   tasks:
-  - name: install JDK 11
+  - name: install JDK 8
     yum: name=java-1.8.0-openjdk state=present
   - name: add tomcat group
     group:
