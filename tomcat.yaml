@@ -4,7 +4,7 @@
   tasks:
   - name: copy and untar tomcat
     unarchive:
-      src: /home/ansible/apache-tomcat-10.0.7.tar.gz
+      src: /root/apache-tomcat-10.0.7.tar.gz
       dest: /opt/
       copy: no
   - name: copy users
